@@ -1,0 +1,42 @@
+/*
+ * Contains styles for the static "coming soon" page.
+ */
+@use "../variables" as vars;
+
+$heading-color: #1a180f;
+$subheading-color: #383525;
+$background-color: #F8F6F2;
+
+body#landing-page {
+    background-color: $background-color;
+}
+
+#landing-page-container {
+    margin-top: 150px;
+}
+
+#kolomon-icon {
+    width: 170px;
+    height: auto;
+    margin-bottom: 3rem;
+}
+
+#kolomon-heading {
+    font-family: vars.$font-family-primary;
+    font-size: 6rem;
+    letter-spacing: -0.06em;
+    color: $heading-color;
+    margin-bottom: 0.5rem;
+}
+
+#kolomon-subheading {
+    font-family: vars.$font-family-primary;
+    font-style: italic;
+    font-size: 2.4rem;
+    letter-spacing: 0.01em;
+    color: $subheading-color;
+}
+
+#kolomon-about {
+    font-family: vars.$font-family-secondary;
+}

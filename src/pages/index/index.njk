@@ -1,23 +1,33 @@
 <!doctype html>
-<html lang="en">
+<html lang="sl">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Site</title>
-
-    {# NOTE: Don't include <link> or <script> tags here,
-       import SCSS and related stuff in your index.ts/js script instead! #}
+    <title>Kolomon - slovenski fantazijski slovarček</title>
 </head>
-<body>
-    <div class="container" id="index-demo">
-        <div class="container__child mt25 mb25 p10">
-            <h1>Lorem ipsum!</h1>
-            {# Example of including content via Nunjucks. #}
-            <p>{% include "lorem-ipsum.njk" %}</p>
-            <p class="text-center">
-                For a sample page that also explains what the Bones thing is about, see <a href="sample.html"><b>here</b></a>.
-            </p>
+<body id="landing-page">
+    <div class="container" id="landing-page-container">
+        <div class="container__child center-horizontal mt25 mb25 p10">
+            <div class="text-center">
+                <img src="../../assets/images/kolomon-icon-v3.png" alt="Kolomon Icon" id="kolomon-icon">
+                <h1 id="kolomon-heading">Kolomon</h1>
+                <div id="kolomon-subheading">slovenski fantazijski slovarček</div>
+            </div>
+            <div class="text-justify mt60" id="kolomon-about">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate diam risus, eget tincidunt nisl tincidunt sit amet. Nulla pretium nec orci sit amet lacinia. Aenean scelerisque varius sapien, id efficitur ligula sagittis nec. In ac magna vitae neque euismod viverra nec at neque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                </p>
+                <p>
+                    Proin eu purus a ligula porta blandit. Donec et dolor nec erat volutpat tempor. Ut dignissim fermentum tellus eget fermentum. Quisque tempus quam nec neque vestibulum, in hendrerit erat condimentum. Aenean condimentum elementum diam, at maximus ipsum malesuada eget. Proin quis accumsan purus. Integer nec nisi ex. Integer in porttitor orci, at condimentum ipsum.
+                </p>
+                <p>
+                    Vivamus in est lacinia, posuere lacus at, maximus enim. Curabitur velit erat, lobortis ac elit ac, tristique vulputate odio. Nunc eros justo, dapibus vel congue sed, sollicitudin mattis libero. Proin quis elit congue lectus hendrerit consequat at eget erat. Pellentesque et aliquet est. Sed nec quam facilisis, accumsan turpis ac, condimentum justo. Praesent mollis, arcu ut rhoncus tincidunt, est tortor eleifend libero, sed accumsan quam risus eget leo. Aliquam dapibus viverra dui, et aliquet enim convallis ac. Praesent in quam eleifend, maximus tortor vitae, pellentesque velit. Vestibulum pulvinar pharetra dolor. Nunc faucibus, leo id feugiat malesuada, diam neque lacinia diam, sed volutpat erat enim eget ipsum.
+                </p>
+                <p>
+                    Praesent a maximus arcu. Suspendisse potenti.
+                </p>
+            </div>
         </div>
     </div>
 </body>
