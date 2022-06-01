@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Site</title>
+
+    {# NOTE: Don't include <link> or <script> tags here,
+       import SCSS and related stuff in your index.ts/js script instead! #}
+</head>
+<body>
+    <div class="container" id="index-demo">
+        <div class="container__child mt25 mb25 p10">
+            <h1>Lorem ipsum!</h1>
+            {# Example of including content via Nunjucks. #}
+            <p>{% include "lorem-ipsum.njk" %}</p>
+            <p class="text-center">
+                For a sample page that also explains what the Bones thing is about, see <a href="sample.html"><b>here</b></a>.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
