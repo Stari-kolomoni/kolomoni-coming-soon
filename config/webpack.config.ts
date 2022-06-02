@@ -1,6 +1,7 @@
 import { Configuration, LoaderContext, DefinePlugin } from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -137,6 +138,28 @@ const webpackPlugins: any[] = pages.map((page: Page) => {
     });
 });
 
+const htmlLoaderURLIgnore: string[] = [
+    "apple-touch-icon.png",
+    "favicon-32x32.png",
+    "favicon-16x16.png",
+    "safari-pinned-tab.svg",
+]
+
+const htmlLoaderDefaultOptions = {
+    sources: {
+        urlFilter: (_: string, value: string): boolean => {
+            let anyMatch: boolean = false;
+            htmlLoaderURLIgnore.forEach((potentialMatch: string) => {
+                if (value.includes(potentialMatch)) {
+                    anyMatch = true;
+                }
+            });
+
+            return !anyMatch;
+        },
+    }
+};
+
 
 const config: Configuration & Record<string, any> = {
     mode: IS_PRODUCTION ? "production" : "development",
@@ -151,6 +174,18 @@ const config: Configuration & Record<string, any> = {
         }),
         new DefinePlugin({
             IS_PRODUCTION,
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                ...(
+                    fs.existsSync("src/static")
+                        ? [{ from: "src/static", to: "assets" }] : []
+                ),
+                ...(
+                    fs.existsSync("src/favicons")
+                        ? [{ from: "src/favicons", to: "." }] : []
+                ),
+            ]
         }),
     ],
     resolve: {
@@ -231,12 +266,14 @@ const config: Configuration & Record<string, any> = {
              */
             {
                 test: /\.html$/i,
-                loader: "html-loader"
+                loader: "html-loader",
+                options: htmlLoaderDefaultOptions
             },
             {
                 test: /\.njk$/i,
                 loader: "html-loader",
                 options: {
+                    ...htmlLoaderDefaultOptions,
                     preprocessor: (content: string | Buffer, context: LoaderContext<unknown>) => {
                         let rawContent: string;
                         if (typeof content === "string") {
