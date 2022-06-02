@@ -330,7 +330,7 @@ $iconDistanceBetween: 8px;
 @include media.onlyPhone {
     #landing-page-mobile-links {
         display: initial;
-        width: 90%;
+        width: 100%;
         padding: 10px;
 
         .mobile-link {
