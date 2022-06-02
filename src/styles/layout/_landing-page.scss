@@ -157,7 +157,7 @@ $wobbleRotationIntensity: 0.1;
  * Sidebar
  */
 $sidebarSlideDistance: 8px;
-$distanceFromEdge: 30px;
+$distanceFromEdge: 40px;
 $iconSize: 36px;
 $iconDistanceBetween: 8px;
 
@@ -175,7 +175,8 @@ $iconDistanceBetween: 8px;
 #landing-page-sidebar {
     position: fixed;
     right: 0;
-    padding: 20px $distanceFromEdge 8px 8px;
+    bottom: 0;
+    padding: 20px $distanceFromEdge 48px 24px;
 
     animation-name: sidebar-slide-in;
     animation-timing-function: animations.$ease-in-out-cubic;
@@ -187,13 +188,9 @@ $iconDistanceBetween: 8px;
 
 @include media.onlyPhone {
     #landing-page-sidebar {
-        bottom: 4px;
-    }
-}
-
-@include media.tabletPortraitUp {
-    #landing-page-sidebar {
-        bottom: 30px;
+        position: absolute;
+        padding-right: 2px;
+        padding-bottom: 4px;
     }
 }
 
@@ -259,6 +256,14 @@ $iconDistanceBetween: 8px;
 
         .icon {
             opacity: 1;
+        }
+    }
+}
+
+@include media.onlyPhone {
+    .sidebar-link {
+        .description {
+            font-size: 1.2rem;
         }
     }
 }
