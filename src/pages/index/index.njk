@@ -63,6 +63,24 @@
             </div>
         </div>
 
+        <div class="container__child center-horizontal mt60 p10" id="landing-page-mobile-links">
+            <a href="https://github.com/stari-kolomoni" class="mobile-link grid--quarters">
+                <span class="mobile-link-icon">{{ "src/assets/svg/icons/github-brands.svg" | cat | safe }}</span>
+                <div class="mobile-link-description-container">
+                    <span class="mobile-link-description">Spremljaj odprtokodni razvoj</span>
+                </div>
+            </a>
+            <a href="https://no.spam.thank.you" class="mobile-link grid--quarters" data-email="true">
+                <span class="mobile-link-icon">{{ "src/assets/svg/icons/envelope-solid.svg" | cat | safe }}</span>
+                <div class="mobile-link-description-container">
+                    <span class="mobile-link-description mobile-link-description--multiline">
+                        <span>Kontakt</span>
+                        <span class="mobile-link-description__tiny">(stari.kolomoni AT gmail DOT com)</span>
+                    </span>
+                </div>
+            </a>
+        </div>
+
         {#
         <div class="container__child center-horizontal mt60 p10">
             <p>
@@ -85,11 +103,11 @@
             </div>
             <span class="icon">{{ "src/assets/svg/icons/github-brands.svg" | cat | safe }}</span>
         </a>
-        <a href="https://no.spam.thank.you" class="sidebar-link" id="sidebar-mail">
+        <a href="https://no.spam.thank.you" class="sidebar-link" data-email="true">
             <div class="description-container">
                 <span class="description description--multiline">
                     <span>Kontakt</span>
-                    <span class="item description__tiny">(stari.kolomoni AT gmail DOT com)</span>
+                    <span class="description__tiny">(stari.kolomoni AT gmail DOT com)</span>
                 </span>
             </div>
             <span class="icon">{{ "src/assets/svg/icons/envelope-solid.svg" | cat | safe }}</span>

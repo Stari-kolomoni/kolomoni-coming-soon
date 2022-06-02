@@ -34,10 +34,12 @@ const onReady = () => {
      * Sidebar mail obfuscation
      */
     logger.info("Setting sidebar mail href.");
-    const sidebarMail = document.getElementById("sidebar-mail");
-    if (sidebarMail !== null && sidebarMail instanceof HTMLAnchorElement) {
-        sidebarMail.href = mail;
-    }
+    const emails = document.querySelectorAll("[data-email=true]");
+    emails.forEach((email: Element) => {
+        if (email !== null && email instanceof HTMLAnchorElement) {
+            email.href = mail;
+        }
+    });
 
     /*
      * Sidebar hover handlers
