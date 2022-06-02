@@ -2,6 +2,8 @@
  * Contains styles for the static "coming soon" page.
  */
 @use "../variables" as vars;
+@use "../modules/media" as media;
+@use "../modules/animations" as animations;
 
 $heading-color: #1a180f;
 $subheading-color: #383525;
@@ -11,6 +13,46 @@ body#landing-page {
     background-color: $background-color;
 }
 
+/*
+ * Decoration
+ */
+#kolomon-decoration-container {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    overflow-x: hidden;
+    z-index: -1;
+
+    &.decoration-hidden {
+        opacity: 0;
+    }
+
+    transition: opacity .2s animations.$ease-out-circ;
+    opacity: 1;
+}
+
+@include media.im-media("<tablet-landscape", ">phone") {
+    #kolomon-decoration-container {
+        top: -30px;
+        width: 200%;
+        left: -50%;
+    }
+}
+
+@include media.im-media("<=phone") {
+    #kolomon-decoration-container {
+        width: 400%;
+        top: -140px;
+        opacity: 0.94;
+    }
+}
+
+
+/*
+ * Content
+ */
 #landing-page-container {
     margin-top: 150px;
 }
@@ -39,4 +81,14 @@ body#landing-page {
 
 #kolomon-about {
     font-family: vars.$font-family-secondary;
+}
+
+@include media.im-media("<=phone") {
+    #kolomon-heading {
+        font-size: (6rem * 0.8);
+    }
+
+    #kolomon-subheading {
+        font-size: (2.4rem * 0.8);
+    }
 }

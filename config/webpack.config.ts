@@ -208,6 +208,10 @@ const config: Configuration & Record<string, any> = {
                     filename: IS_PRODUCTION ? "./assets/images/[name]-[hash][ext]" : "./assets/images/[name][ext]"
                 }
             },
+            {
+                test: /\.svg/i,
+                type: "asset/source",
+            },
             /*
              * This rule parses HTML files and makes sure any <link>/<script>/... tags are properly parsed.
              */
