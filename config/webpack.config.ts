@@ -1,4 +1,4 @@
-import { Configuration, LoaderContext } from "webpack";
+import { Configuration, LoaderContext, DefinePlugin } from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import fs from "node:fs";
@@ -20,6 +20,14 @@ const nunjucksTemplatePath = path.resolve("./src/templates");
 const nunjucksEnv: Environment = new Environment(
   new FileSystemLoader(nunjucksTemplatePath, { watch: !IS_ONE_SHOT_BUILD, noCache: false })
 );
+
+nunjucksEnv.addFilter("cat", (filename: string) => {
+    if (!fs.existsSync(filename)) {
+        throw new Error("cat: Could not find filename!");
+    }
+
+    return fs.readFileSync(filename, "utf8");
+});
 
 interface Page {
     name: string,
@@ -141,7 +149,13 @@ const config: Configuration & Record<string, any> = {
             filename: IS_PRODUCTION ? "./styles/[name]-[hash].css" : "./styles/[name].css",
             chunkFilename: IS_PRODUCTION ? "./styles/[name]-[hash].css" : "./styles/[name].css",
         }),
+        new DefinePlugin({
+            IS_PRODUCTION,
+        }),
     ],
+    resolve: {
+        extensions: [".ts", "..."]
+    },
     output: {
         filename: "[name]-[hash].js",
         clean: true,

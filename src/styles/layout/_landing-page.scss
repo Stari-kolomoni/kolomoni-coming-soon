@@ -4,6 +4,7 @@
 @use "../variables" as vars;
 @use "../modules/media" as media;
 @use "../modules/animations" as animations;
+@use "../modules/common" as common;
 
 $heading-color: #1a180f;
 $subheading-color: #383525;
@@ -41,11 +42,11 @@ body#landing-page {
     }
 }
 
-@include media.im-media("<=phone") {
+@include media.onlyPhone {
     #kolomon-decoration-container {
         width: 400%;
-        top: -140px;
-        opacity: 0.94;
+        top: -180px;
+        opacity: 0.95;
     }
 }
 
@@ -53,14 +54,59 @@ body#landing-page {
 /*
  * Content
  */
-#landing-page-container {
-    margin-top: 150px;
+@include media.tabletPortraitUp {
+    #landing-page-container {
+        margin-top: 200px;
+    }
+}
+
+@include media.onlyPhone {
+    #landing-page-container {
+        margin-top: 80px;
+    }
+}
+
+// Adds very very slight shimmering to the Kolomon icon after some delay.
+$wobbleTransformIntensity: 0.75px;
+$wobbleRotation: 0.2deg;
+$wobbleRotationIntensity: 0.1;
+
+@keyframes icon-wobble {
+    0% {
+        transform: none;
+    }
+    15% {
+        transform: translate3d(0, $wobbleTransformIntensity, 0px) rotate3d(0, 0, -$wobbleRotationIntensity, $wobbleRotation) scale(1.002);
+    }
+    45% {
+        transform: none;
+    }
+    75% {
+        transform: translate3d(0, $wobbleTransformIntensity, 0) rotate3d(0, 0, $wobbleRotationIntensity, $wobbleRotation) scale(1.0035);
+    }
+    100% {
+        transform: none;
+    }
+}
+
+#landing-page-heading-container {
+    @include common.flex-column-center();
+}
+
+#kolomon-icon-container {
+    margin-bottom: 3rem;
+
+    animation-name: icon-wobble;
+    animation-iteration-count: infinite;
+    animation-delay: 8s;
+    animation-timing-function: ease;
+    animation-duration: 4s;
+    animation-fill-mode: both;
 }
 
 #kolomon-icon {
     width: 170px;
     height: auto;
-    margin-bottom: 3rem;
 }
 
 #kolomon-heading {
@@ -81,6 +127,20 @@ body#landing-page {
 
 #kolomon-about {
     font-family: vars.$font-family-secondary;
+    font-size: 1.8rem;
+
+    p {
+        text-indent: 0.8rem;
+    }
+}
+
+@include media.im-media(">=laptop") {
+    $laptopUpContainerSideMargin: 250px;
+
+    #landing-page-container {
+        margin-left: $laptopUpContainerSideMargin;
+        margin-right: $laptopUpContainerSideMargin;
+    }
 }
 
 @include media.im-media("<=phone") {
@@ -91,4 +151,135 @@ body#landing-page {
     #kolomon-subheading {
         font-size: (2.4rem * 0.8);
     }
+}
+
+/*
+ * Sidebar
+ */
+$sidebarSlideDistance: 8px;
+$distanceFromEdge: 30px;
+$iconSize: 36px;
+$iconDistanceBetween: 8px;
+
+@keyframes sidebar-slide-in {
+    0% {
+        opacity: 0.1;
+        right: -$sidebarSlideDistance;
+    }
+    100% {
+        opacity: initial;
+        right: 0;
+    }
+}
+
+#landing-page-sidebar {
+    position: fixed;
+    right: 0;
+    padding: 20px $distanceFromEdge 8px 8px;
+
+    animation-name: sidebar-slide-in;
+    animation-timing-function: animations.$ease-in-out-cubic;
+    animation-delay: .2s;
+    animation-duration: .8s;
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+}
+
+@include media.onlyPhone {
+    #landing-page-sidebar {
+        bottom: 4px;
+    }
+}
+
+@include media.tabletPortraitUp {
+    #landing-page-sidebar {
+        bottom: 30px;
+    }
+}
+
+.sidebar-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    text-decoration: none;
+
+    padding: 6px 10px;
+    background-color: transparent;
+    cursor: default;
+
+    transition: opacity .15s animations.$ease-out-cubic;
+    opacity: 0.4;
+
+    .description-container {
+        padding: 4px 12px 4px 6px;
+        pointer-events: none;
+    }
+
+    .description {
+        padding: 4px 8px;
+        opacity: 0;
+
+        font-family: vars.$font-family-secondary;
+        font-size: 1.6rem;
+        font-weight: bold;
+
+        // BEM Modifier, requires "description description--multiline".
+        &--multiline {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+
+            .item:not(:first-of-type) {
+                margin-top: 2px;
+            }
+        }
+
+        &__tiny {
+            font-size: 1.1rem;
+        }
+    }
+
+    .icon {
+        display: block;
+        width: $iconSize;
+        height: $iconSize;
+        cursor: pointer;
+    }
+
+    // Added dynamically when the icon is hovered over.
+    &.active {
+        cursor: pointer;
+        opacity: 1;
+
+        .description {
+            color: vars.$body-text;
+            opacity: 1;
+        }
+
+        .icon {
+            opacity: 1;
+        }
+    }
+}
+
+// Add description borders to hover elements.
+@include media.upToTabletLandscape {
+    .sidebar-link {
+        .description {
+            border-radius: 3px;
+            border: 2px solid transparent;
+        }
+    }
+
+    .sidebar-link.active {
+        .description {
+            border: 2px solid transparentize(desaturate(vars.$primary-dark, 80%), 0.6);
+            background-color: vars.$background-primary;
+        }
+    }
+}
+
+.sidebar-link:not(:first-of-type) {
+    margin-top: $iconDistanceBetween;
 }

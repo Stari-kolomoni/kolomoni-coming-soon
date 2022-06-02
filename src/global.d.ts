@@ -4,3 +4,6 @@
 declare module "*.scss"
 declare module "*.jpg"
 declare module "*.svg"
+
+// From webpack's DefinePlugin.
+declare const IS_PRODUCTION: boolean;

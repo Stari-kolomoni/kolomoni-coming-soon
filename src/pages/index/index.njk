@@ -7,42 +7,64 @@
     <title>Kolomon - slovenski fantazijski slovarček</title>
 </head>
 <body id="landing-page">
-    <div id="kolomon-decoration-container" class="decoration-hidden">
-        <!-- dynamic content -->
+    {# Barvita dekoracija v ozadju #}
+    <div id="kolomon-decoration-container">
+        {{ "src/assets/svg/kolomoni-landing-decoration.svg" | cat | safe }}
     </div>
 
-    <div class="container" id="landing-page-container">
+    {# Prva stran - naslov in kratek opis #}
+    <main class="container" id="landing-page-container">
         <div class="container__child center-horizontal mt25 p10">
-            <div class="text-center">
-                <img src="../../assets/images/kolomon-icon-v3.png" alt="Kolomon Icon" id="kolomon-icon">
+            <div class="text-center" id="landing-page-heading-container">
+                <div id="kolomon-icon-container">
+                    <div id="kolomon-icon">{{ "src/assets/svg/kolomon-icon-v3.svg" | cat | safe }}</div>
+                </div>
                 <h1 id="kolomon-heading">Kolomon</h1>
                 <div id="kolomon-subheading">slovenski fantazijski slovarček</div>
             </div>
             <div class="text-justify mt60" id="kolomon-about">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate diam risus, eget tincidunt nisl tincidunt sit amet.
-                    Nulla pretium nec orci sit amet lacinia. Aenean scelerisque varius sapien, id efficitur ligula sagittis nec.
-                    In ac magna vitae neque euismod viverra nec at neque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-                    posuere cubilia curae; Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    Zrak zavibrira. Astralne taline se zasučejo in žarijo v čarni modri barvi. V mreži se pojavi
+                    spletišče - komaj zaznavno se prelije v tvarni svet, a ostaja skrivnostno prazno.
+                    Vsebina še čaka, oblikuje se, trga, mesi v končno obliko.
                 </p>
                 <p>
-                    Proin eu purus a ligula porta blandit. Donec et dolor nec erat volutpat tempor. Ut dignissim fermentum tellus eget
-                    fermentum. Quisque tempus quam nec neque vestibulum, in hendrerit erat condimentum. Aenean condimentum elementum diam,
-                    at maximus ipsum malesuada eget. Proin quis accumsan purus. Integer nec nisi ex. Integer in porttitor orci, at condimentum ipsum.
-                </p>
-                <p>
-                    Vivamus in est lacinia, posuere lacus at, maximus enim. Curabitur velit erat, lobortis ac elit ac, tristique vulputate
-                    odio. Nunc eros justo, dapibus vel congue sed, sollicitudin mattis libero. Proin quis elit congue lectus hendrerit consequat
-                    at eget erat. Pellentesque et aliquet est. Sed nec quam facilisis, accumsan turpis ac, condimentum justo. Praesent mollis,
-                    arcu ut rhoncus tincidunt, est tortor eleifend libero, sed accumsan quam risus eget leo. Aliquam dapibus viverra dui, et
-                    aliquet enim convallis ac. Praesent in quam eleifend, maximus tortor vitae, pellentesque velit. Vestibulum pulvinar pharetra
-                    dolor. Nunc faucibus, leo id feugiat malesuada, diam neque lacinia diam, sed volutpat erat enim eget ipsum.
-                </p>
-                <p>
-                    Praesent a maximus arcu. Suspendisse potenti.
+                    Vsak hip bo nared ... <i>in Stari Kolomoni bodo oživeli.</i>
                 </p>
             </div>
         </div>
-    </div>
+
+        {#
+        <div class="container__child center-horizontal mt60 p10">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel mauris sem. Pellentesque efficitur sodales sem ut iaculis. Integer aliquet nibh ut tempor imperdiet. Quisque gravida purus ac dolor interdum congue. Proin laoreet bibendum magna, eget dignissim turpis semper sit amet. Donec eget nulla vel turpis convallis commodo vel at massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur enim massa, rutrum id nulla ac, consectetur finibus lorem. Nullam est ante, placerat sed condimentum et, placerat eu eros. Vivamus semper urna sit amet varius ullamcorper. Donec semper est sed odio mattis, et porta mauris ultrices. Ut nec enim libero. Etiam posuere, enim sed tempus dictum, erat risus mollis justo, vel tristique felis arcu sed turpis. Phasellus euismod finibus ultricies.
+            </p>
+            <p>
+                Mauris quis tincidunt ex. Nunc ut mollis lacus. Suspendisse semper tempor mauris eget blandit. Integer non risus accumsan, fringilla purus ullamcorper, congue erat. In et nibh a sem mattis bibendum sed et lacus. Cras varius facilisis suscipit. In rhoncus lacus nec augue aliquet posuere. Ut vitae fermentum augue. Etiam sed dui elit. Etiam cursus, odio ut sodales interdum, lectus dui condimentum lectus, at feugiat turpis tellus in massa. Ut vehicula hendrerit tellus, a accumsan ante pretium nec. Ut rhoncus leo ante, et ornare libero molestie vel. Mauris ultricies quam vel risus tincidunt mollis. Nulla eleifend, felis vel lobortis dignissim, leo nulla finibus sem, ac varius elit sem vitae ipsum. Quisque scelerisque non lectus sit amet tempus. Nulla quis porta felis.
+            </p>
+            <p></p>
+            <p></p>
+        </div>
+        #}
+    </main>
+
+    {# Seznam povezav na desni strani #}
+    <aside id="landing-page-sidebar">
+        <a href="https://github.com/stari-kolomoni" class="sidebar-link" id="sidebar-github">
+            <div class="description-container">
+                <span class="description">Spremljaj odprtokodni razvoj</span>
+            </div>
+            <span class="icon">{{ "src/assets/svg/icons/github-brands.svg" | cat | safe }}</span>
+        </a>
+        <a href="https://no.spam.thank.you" class="sidebar-link" id="sidebar-mail">
+            <div class="description-container">
+                <span class="description description--multiline">
+                    <span>Kontakt</span>
+                    <span class="item description__tiny">(stari.kolomoni AT gmail DOT com)</span>
+                </sup>
+            </div>
+            <span class="icon">{{ "src/assets/svg/icons/envelope-solid.svg" | cat | safe }}</span>
+        </a>
+    </aside>
 </body>
 </html>
