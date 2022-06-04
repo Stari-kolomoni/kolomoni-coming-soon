@@ -228,7 +228,7 @@ $iconDistanceBetween: 8px;
         }
 
         &__tiny {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
     }
 
@@ -315,7 +315,7 @@ $iconDistanceBetween: 8px;
         }
 
         &__tiny {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
     }
 
@@ -335,6 +335,10 @@ $iconDistanceBetween: 8px;
 
         .mobile-link {
             display: grid;
+
+            &:not(:first-of-type) {
+                margin-top: 20px;
+            }
         }
 
         .mobile-link-icon {
